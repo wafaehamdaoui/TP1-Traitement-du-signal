@@ -5,10 +5,10 @@
 
 ## Objectifs du TP:
 
-      • Représentation de signaux et applications de la transformée de Fourier discrète
+  Représentation de signaux et applications de la transformée de Fourier discrète
         (TFD) sous Matlab. 
 
-       • Evaluation de l’intérêt du passage du domaine temporel au domaine fréquentiel
+  Evaluation de l’intérêt du passage du domaine temporel au domaine fréquentiel
           dans l’analyse et l’interprétation des signaux physiques réels.
 
 ## Représentation temporelle et fréquentielle 
