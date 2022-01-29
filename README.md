@@ -153,7 +153,7 @@ la commande randn pour générer le bruit. Il est à noter qu’un bruit blanc e
 	Malgré le bruit on voit qu’il est toujours possible de distinguer les fréquences du signal en raison des pics de puissance.
 En plus, on voit que, entre 0Hz et 15Hz, la densité spectrale de puissance est relativement constante. Ceci est dû au bruit blanc gaussien.
 
-## Analyse fréquentielle du chant du rorqual bleu 
+## Analyse fréquentielle du chant du rorqual bleu: 
 
 -*Il existe plusieurs signaux dont l’information est encodée dans des sinusoïdes. Les
 ondes sonores est un bon exemple. Considérons maintenant des données audios
@@ -171,19 +171,23 @@ allant de 2.45e4 à 3.10e4.
 
 ```Matlab
 
-whaleFile = fullfile(matlabroot,'examples','matlab','data','bluewhale.au');
-[w,ft] = audioread(whaleFile);
-chant=w(2.45e4:3.10e4);
-subplot(2,1,1);
-soundsc(w,fs);
+close all;
+clc;
+% tout d'abord on lit l' audio
+whaleFile = 'bluewhale.au';
+[x,fs] = audioread(whaleFile);
 
-Nchant=length(chant);
-t=[0:Nchant-1]*1/ft;
-plot(t,chant);
-title('courbe du signal bluewhale');
+% plot(x)
+% xlabel('Sample Number')
+% ylabel('Amplitude')
 
+chant=x(2.45e4:3.10e4);
+N=length(chant);
+t=[0:N-1]*1/fs;
+% plot(t,chant)
 
 ```
+On peut ecouter ce signal en utilisant la commande sound.
 
 La TFD peut être utilisée pour identifier les composantes fréquentielles de ce signal
 audio. Dans certaines applications qui traitent de grandes quantités de données avec
@@ -195,15 +199,14 @@ la transformation.
 ```Matlab
 
 %la densité spectrale de puissance du signal
-fshift=[-Nchant/2:Nchant/2-1]*(ft/Nchant)/10;
-DSP=abs(fft(chant).^2/Nchant);
-subplot(2,1,2);
+fshift=[-N/2:N/2-1]*(fs/N)/10;
+DSP=abs(fft(chant)).^2/N;
 plot(fshift,fftshift(DSP));
-title('la densité spectrale de puissance du signal')
-```
 
+```
+ > output:
+ 
+ ![image](https://user-images.githubusercontent.com/75392302/151667012-03eef029-349d-4092-9589-a5169ab61a3e.png)
 
 * On peut Déterminer à partir du tracé, la fréquence fondamentale du gémissement de rorqual
 bleu.*
-
-![image](https://user-images.githubusercontent.com/85129301/149664604-28481b50-bfbc-49a2-8cbd-1ade3023551f.png)
