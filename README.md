@@ -184,9 +184,13 @@ whaleFile = 'bluewhale.au';
 chant=x(2.45e4:3.10e4);
 N=length(chant);
 t=[0:N-1]*1/fs;
-% plot(t,chant)
+plot(t,chant)
 
 ```
+> output:
+
+![image](https://user-images.githubusercontent.com/75392302/151667178-4b3b5c78-eb3f-4913-8df2-38fc1eb5dd23.png)
+
 On peut ecouter ce signal en utilisant la commande sound.
 
 La TFD peut être utilisée pour identifier les composantes fréquentielles de ce signal
